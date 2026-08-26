@@ -288,7 +288,7 @@ body {
   border-radius: 16px;
   width: 64px;
   height: 64px;
-  padding: 10px;
+  padding: 5px;
   background: #f1f5f9;
   cursor: pointer;
   box-sizing: border-box;
@@ -363,13 +363,28 @@ body {
   font-weight: 500;
 }
 
+.quantity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.quantity-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
 .quantity-section {
   display: flex;
   align-items: center;
   border: 1px solid #cbd5e1;
   border-radius: 30px;
   width: fit-content;
-  margin-bottom: 24px;
   overflow: hidden;
 }
 
