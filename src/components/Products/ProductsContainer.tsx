@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProducts } from './hooks/useProducts';
 import { ProductList } from './components/ProductList';
+import { ProductDetail } from './components/ProductDetail';
+import type { Product } from '../../interfaces/IProduct';
 
 export const ProductsContainer: React.FC = () => {
   const { products, loading, error } = useProducts();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  if (selectedProduct) {
+    return (
+      <ProductDetail
+        product={selectedProduct}
+        onBack={() => setSelectedProduct(null)}
+      />
+    );
+  }
 
   return (
     <div className="products-container">
@@ -27,7 +39,7 @@ export const ProductsContainer: React.FC = () => {
       )}
 
       {!loading && !error && products.length > 0 && (
-        <ProductList products={products} />
+        <ProductList products={products} onProductClick={setSelectedProduct} />
       )}
     </div>
   );
