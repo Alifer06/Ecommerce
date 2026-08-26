@@ -3,14 +3,15 @@ import type { Product } from '../../../interfaces/IProduct';
 
 interface ProductCardProps {
   product: Product;
+  onClick: () => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const roundedRating = Math.round(product.rating || 0);
   const stars = '★'.repeat(roundedRating) + '☆'.repeat(5 - roundedRating);
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="product-image-container">
         {product.discountPercentage > 0 && (
           <span className="product-discount">-{Math.round(product.discountPercentage)}%</span>
