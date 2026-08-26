@@ -6,9 +6,15 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const roundedRating = Math.round(product.rating || 0);
+  const stars = '★'.repeat(roundedRating) + '☆'.repeat(5 - roundedRating);
+
   return (
     <div className="product-card">
       <div className="product-image-container">
+        {product.discountPercentage > 0 && (
+          <span className="product-discount">-{Math.round(product.discountPercentage)}%</span>
+        )}
         <img
           src={product.thumbnail}
           alt={product.title}
@@ -17,6 +23,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         />
       </div>
       <div className="product-info">
+        <div className="product-rating">
+          <span className="stars">{stars}</span>
+          <span className="rating-number">({product.rating})</span>
+        </div>
         <h3 className="product-name">{product.title}</h3>
         <div className="product-price">${product.price.toLocaleString()}</div>
       </div>
