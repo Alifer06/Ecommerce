@@ -4,9 +4,10 @@ import type { Product } from '../../../interfaces/IProduct';
 interface ProductDetailProps {
   product: Product;
   onBack: () => void;
+  onAddToCart: (quantity: number) => void;
 }
 
-export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack }) => {
+export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onAddToCart }) => {
   const [selectedImage, setSelectedImage] = useState<string>(product.thumbnail);
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -68,7 +69,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack })
           </div>
 
           <div className="action-buttons">
-            <button className="add-to-cart-btn">
+            <button className="add-to-cart-btn" onClick={() => onAddToCart(quantity)}>
               Agregar al carrito
             </button>
             <button className="buy-now-btn">Comprar ahora</button>
