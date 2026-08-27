@@ -20,7 +20,9 @@ export const PaymentOptions: React.FC<PaymentOptionsProps> = ({
             className={`payment-option-card ${isSelected ? 'selected' : ''}`}
             onClick={() => onSelectMethod(method.id)}
           >
-            <div className="payment-option-icon">{method.icon}</div>
+            <div className="payment-option-icon">
+              <span className="material-symbols-outlined">{method.icon}</span>
+            </div>
             <div className="payment-option-info">
               <span className="payment-option-title">{method.title}</span>
               <span className="payment-option-desc">{method.desc}</span>

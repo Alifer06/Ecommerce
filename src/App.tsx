@@ -20,7 +20,7 @@ function App() {
     <div className="page-container">
       {view !== 'checkout' && (
         <div className="cart-floating-icon" onClick={() => setView(view === 'cart' ? 'products' : 'cart')}>
-          <span className="cart-emoji">🛒</span>
+          <span className="material-symbols-outlined">shopping_cart</span>
           {totalCartItems > 0 && <span className="cart-badge">{totalCartItems}</span>}
         </div>
       )}
