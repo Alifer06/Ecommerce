@@ -3,7 +3,7 @@ import type { Product } from '../../../interfaces/IProduct';
 import type { CartItem } from '../../../interfaces/ICartItem';
 
 export const useCart = () => {
-  const [view, setView] = useState<'products' | 'cart'>('products');
+  const [view, setView] = useState<'products' | 'cart' | 'checkout'>('products');
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const handleAddToCart = (product: Product, quantity: number) => {
@@ -30,6 +30,10 @@ export const useCart = () => {
     setCart(nuevoCarrito);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   let totalCartItems = 0;
   for (const item of cart) {
     totalCartItems += item.quantity;
@@ -43,6 +47,7 @@ export const useCart = () => {
     handleUpdateQuantity,
     handleRemoveFromCart,
     totalCartItems,
+    clearCart,
   };
 };
 
