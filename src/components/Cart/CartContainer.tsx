@@ -6,6 +6,7 @@ interface CartContainerProps {
   onUpdateQuantity: (productId: number, quantity: number) => void;
   onRemove: (productId: number) => void;
   onBack: () => void;
+  onCheckout: () => void;
 }
 
 export const CartContainer: React.FC<CartContainerProps> = ({
@@ -13,6 +14,7 @@ export const CartContainer: React.FC<CartContainerProps> = ({
   onUpdateQuantity,
   onRemove,
   onBack,
+  onCheckout,
 }) => {
   let totalItems = 0;
   let subtotal = 0;
@@ -103,7 +105,7 @@ export const CartContainer: React.FC<CartContainerProps> = ({
                 <span className="summary-label-total">Total</span>
                 <span className="summary-val-total">${total.toLocaleString()}</span>
               </div>
-              <button className="checkout-btn">Continuar al pago</button>
+              <button className="checkout-btn" onClick={onCheckout}>Continuar al pago</button>
             </div>
           </div>
         </div>
