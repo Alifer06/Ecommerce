@@ -7,6 +7,7 @@ interface CartPageProps {
   onUpdateQuantity: (productId: number, quantity: number) => void;
   onRemove: (productId: number) => void;
   onBack: () => void;
+  onCheckout: () => void;
 }
 
 const CartPage: React.FC<CartPageProps> = ({
@@ -14,6 +15,7 @@ const CartPage: React.FC<CartPageProps> = ({
   onUpdateQuantity,
   onRemove,
   onBack,
+  onCheckout,
 }) => {
   return (
     <CartContainer
@@ -21,6 +23,7 @@ const CartPage: React.FC<CartPageProps> = ({
       onUpdateQuantity={onUpdateQuantity}
       onRemove={onRemove}
       onBack={onBack}
+      onCheckout={onCheckout}
     />
   );
 };
