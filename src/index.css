@@ -43,7 +43,7 @@ body {
 .page-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 24px 24px 40px;
+  padding: 10px 24px 40px;
 }
 
 .page-header {
@@ -234,7 +234,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   padding: 8px 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -349,11 +349,38 @@ body {
   line-height: 1.5;
 }
 
+.detail-price-container {
+  margin-bottom: 24px;
+}
+
+.detail-price-wrapper {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .detail-price {
   font-size: 2.25rem;
   font-weight: 800;
   color: #0f172a;
-  margin-bottom: 24px;
+  margin: 0;
+}
+
+.detail-original-price {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.detail-discount-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
 .detail-checklist {
@@ -767,6 +794,20 @@ body {
   color: #ef4444;
 }
 
+.cart-item-price-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cart-item-original-price {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .cart-item-price {
   font-family: var(--sans);
   font-size: 1.25rem;
@@ -805,6 +846,15 @@ body {
 .summary-val {
   font-weight: 600;
   color: #0f172a;
+}
+
+.savings-row {
+  color: #16a34a;
+}
+
+.summary-val-savings {
+  font-weight: 600;
+  color: #16a34a;
 }
 
 .summary-divider {
