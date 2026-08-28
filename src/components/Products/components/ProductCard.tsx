@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Product } from '../../../interfaces/IProduct';
+import { getDiscountedPrice } from '../../../utils/priceUtils';
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const roundedRating = Math.round(product.rating || 0);
   const stars = '★'.repeat(roundedRating) + '☆'.repeat(5 - roundedRating);
+  const discountedPrice = getDiscountedPrice(product);
 
   return (
     <div className="product-card" onClick={onClick} style={{ cursor: 'pointer' }}>
@@ -29,7 +31,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
           <span className="rating-number">({product.rating})</span>
         </div>
         <h3 className="product-name">{product.title}</h3>
-        <div className="product-price">${product.price.toLocaleString()}</div>
+        <div className="product-price">{discountedPrice.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</div>
       </div>
     </div>
   );
