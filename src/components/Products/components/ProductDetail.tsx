@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../../../interfaces/IProduct';
+import { getDiscountedPrice } from '../../../utils/priceUtils';
 
 interface ProductDetailProps {
   product: Product;
@@ -12,6 +13,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
   const [quantity, setQuantity] = useState<number>(1);
 
   const imagesList = product.images && product.images.length > 0 ? product.images : [product.thumbnail];
+  const hasDiscount = product.discountPercentage > 0;
+  const discountedPrice = getDiscountedPrice(product);
 
   return (
     <div className="product-detail-container">
@@ -41,7 +44,26 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
           <span className="detail-category">{product.category.toUpperCase()}</span>
           <h2 className="detail-title">{product.title}</h2>
           <p className="detail-subtitle">{product.description}</p>
-          <div className="detail-price">${product.price.toLocaleString()}</div>
+
+          <div className="detail-price-container">
+            {hasDiscount ? (
+              <div className="detail-price-wrapper">
+                <span className="detail-price">
+                  {discountedPrice.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+                </span>
+                <span className="detail-original-price">
+                  {product.price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+                </span>
+                <span className="detail-discount-badge">
+                  -{Math.round(product.discountPercentage)}% OFF
+                </span>
+              </div>
+            ) : (
+              <div className="detail-price">
+                ${product.price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+              </div>
+            )}
+          </div>
 
           <div className="detail-checklist">
             <div className="checklist-item">✓ Calidad premium garantizada</div>
@@ -72,7 +94,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, o
             <button className="add-to-cart-btn" onClick={() => onAddToCart(quantity)}>
               Agregar al carrito
             </button>
-            <button className="buy-now-btn">Comprar ahora</button>
           </div>
 
           <div className="specs-table">
