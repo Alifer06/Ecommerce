@@ -15,15 +15,15 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
     selectedMethod === 'card'
       ? 'Tarjeta'
       : selectedMethod === 'wallet'
-      ? 'Billetera digital'
-      : 'SPEI';
+        ? 'Billetera digital'
+        : 'SPEI';
 
   return (
     <div className="modal-overlay">
       <div className="success-modal-card">
         <h3 className="success-modal-title">¡Pago Exitoso!</h3>
         <p className="success-modal-text">
-          Tu pago de <strong>${total.toLocaleString()}</strong> mediante{' '}
+          Tu pago de <strong>{total.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</strong> mediante{' '}
           {methodName} se ha procesado de manera correcta.
         </p>
         <button className="success-modal-btn" onClick={onConfirm}>
