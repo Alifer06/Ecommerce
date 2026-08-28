@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { CartItem } from '../../../interfaces/ICartItem';
+import { getDiscountedPrice } from '../../../utils/priceUtils';
 
 export const useCheckout = (cart: CartItem[]) => {
   const [selectedMethod, setSelectedMethod] = useState<'card' | 'wallet' | 'spei'>('card');
@@ -9,7 +10,7 @@ export const useCheckout = (cart: CartItem[]) => {
   let subtotal = 0;
   for (const item of cart) {
     totalItems = totalItems + item.quantity;
-    subtotal = subtotal + item.product.price * item.quantity;
+    subtotal += getDiscountedPrice(item.product) * item.quantity;
   }
   const shipping = totalItems > 0 ? 149 : 0;
   const total = subtotal + shipping;
