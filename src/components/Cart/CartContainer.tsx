@@ -80,7 +80,7 @@ export const CartContainer: React.FC<CartContainerProps> = ({
                 </div>
                 <div className="cart-item-actions">
                   <button className="remove-item-btn" onClick={() => onRemove(item.product.id)}>
-                    🗑
+                    <span className="material-symbols-outlined"> delete </span>
                   </button>
                   <div className="cart-item-price">
                     ${(item.product.price * item.quantity).toLocaleString()}
