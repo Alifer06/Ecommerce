@@ -14,10 +14,6 @@ export const ProductsContainer: React.FC<ProductsContainerProps> = ({ onAddToCar
 
   return (
     <div className="products-container">
-      <header className="page-header">
-        <h1 className="hero-title">SMARTPHONES</h1>
-        <p className="subtitle">Tecnología de calidad al mejor precio.</p>
-      </header>
       {selectedProduct ? (
         <ProductDetail
           product={selectedProduct}
