@@ -7,10 +7,10 @@ export const useCart = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const handleAddToCart = (product: Product, quantity: number) => {
-    const itemExistente = cart.find((item) => item.product.id === product.id);
-    
-    if (itemExistente) {
-      itemExistente.quantity += quantity;
+    const itemExisting = cart.find((item) => item.product.id === product.id);
+
+    if (itemExisting) {
+      itemExisting.quantity += quantity;
       setCart([...cart]);
     } else {
       setCart([...cart, { product, quantity }]);
@@ -26,8 +26,8 @@ export const useCart = () => {
   };
 
   const handleRemoveFromCart = (productId: number) => {
-    const nuevoCarrito = cart.filter((item) => item.product.id !== productId);
-    setCart(nuevoCarrito);
+    const newCart = cart.filter((item) => item.product.id !== productId);
+    setCart(newCart);
   };
 
   const clearCart = () => {
